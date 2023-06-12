@@ -16,9 +16,9 @@ module.exports = {
     },
     project: './tsconfig.*?.json',
     createDefaultProgram: false,
-    extraFileExtensions: ['.vue'],
+    extraFileExtensions: ['.vue', '.nvue'],
   },
-  plugins: ['vue', '@typescript-eslint', 'import'],
+  plugins: ['vue', '@jcfe/eslint-plugin-nvue', '@typescript-eslint', 'import'],
   extends: [
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
@@ -34,6 +34,7 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
+    '@typescript-eslint/no-this-alias': ['off'],
 
     '@typescript-eslint/no-unused-vars': [
       'error',
@@ -78,5 +79,14 @@ module.exports = {
     ],
     'vue/multi-word-component-names': 'off',
   },
-  globals: { defineOptions: 'readonly' },
+  overrides: [
+    {
+      files: '.nvue',
+      parser: 'vue-eslint-parser',
+    },
+  ],
+  globals: {
+    defineOptions: 'readonly',
+    uni: true,
+  },
 };

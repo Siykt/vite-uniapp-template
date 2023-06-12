@@ -1,5 +1,13 @@
 {
   "semi": true,
   "singleQuote": true,
-  "printWidth": 120
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.nvue",
+      "options": {
+        "parser": "vue"
+      }
+    }
+  ]
 }
